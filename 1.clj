@@ -25,7 +25,7 @@
   (->>
    (for [i (range (count s))] (subs s i))
    (map #(re-find #"one|two|three|four|five|six|seven|eight|nine|\d" %))
-   (filter some?)
+   (take-while some?)
    (map #(get replacements % %))))
 
 (->>
