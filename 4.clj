@@ -4,12 +4,10 @@
  '[clojure.set :as set]
  '[clojure.edn :as edn])
 
-(defn parse-int [n] (Integer/parseInt n))
-
 (defn parse-card [l]
   (let [[_ w h] (str/split l #"(:\s+| \|\s+)")
-        w       (map parse-int (str/split w #"\s+"))
-        h       (map parse-int (str/split h #"\s+"))]
+        w       (map parse-long (str/split w #"\s+"))
+        h       (map parse-long (str/split h #"\s+"))]
     [w h]))
 
 (defn check-win [[w h]]

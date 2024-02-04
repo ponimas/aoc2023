@@ -21,8 +21,6 @@
         :when (-> (get-in data [yy xx]) s nil?)]
     true))
 
-(defn parse-int [n]
-  (Integer/parseInt n))
 
 (defn np [y data]
   (let [l         (get data y)
@@ -42,7 +40,7 @@
                     [n x] (np y data)]
                 {:y   y
                  :x   x
-                 :n   (parse-int n)
+                 :n   (parse-long n)
                  :len (count n)})
 
       ]
@@ -80,7 +78,7 @@
                      :when (= 2 (count n))]
                (->> n
                     (map first)
-                    (map parse-int)
+                    (map parse-long)
                     (apply *)))]
 
   (apply + ratios))
