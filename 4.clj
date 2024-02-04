@@ -31,9 +31,9 @@
 ;; 21821
 
 
-(let [lines        (-> (slurp "in/4.txt") (str/split #"\n"))
-      parsed-cards (mapv parse-card lines)
-      cards-count-init  (vec (repeat (count parsed-cards) 1))]
+(let [lines            (-> (slurp "in/4.txt") (str/split #"\n"))
+      parsed-cards     (mapv parse-card lines)
+      cards-count-init (vec (repeat (count parsed-cards) 1))]
   (->> parsed-cards
        (reduce-kv
         (fn [cards-count i card]
@@ -44,7 +44,6 @@
                (fn [v j] (update v j + increment))
                cards-count application-range))
             cards-count)) cards-count-init)
-       (apply +)
-       println))
+       (apply +)))
 
 ;; 5539496
